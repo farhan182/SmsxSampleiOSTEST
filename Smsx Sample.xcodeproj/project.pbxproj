@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25FF667E214A087A0059B035 /* ShieldSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25FF667D214A087A0059B035 /* ShieldSDK.framework */; };
-		25FF667F214A087A0059B035 /* ShieldSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25FF667D214A087A0059B035 /* ShieldSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5C8C380A204D2036007FEECE /* DTTJailbreakDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3809204D2036007FEECE /* DTTJailbreakDetection.m */; };
 		5CCFE00D204CE667006DED64 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCFE00C204CE667006DED64 /* AppDelegate.m */; };
 		5CCFE010204CE667006DED64 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCFE00F204CE667006DED64 /* ViewController.m */; };
@@ -36,7 +34,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				25FF667F214A087A0059B035 /* ShieldSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,7 +49,6 @@
 		25A64BB6205235E300EB5645 /* libShieldSDK.release.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libShieldSDK.release.a; sourceTree = "<group>"; };
 		25A64BB8205235F000EB5645 /* config-encrypt.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "config-encrypt.txt"; sourceTree = "<group>"; };
 		25A64BBD205239AB00EB5645 /* config */ = {isa = PBXFileReference; lastKnownFileType = folder; name = config; path = ../Shield_iOS.2.4.5.7255/config; sourceTree = "<group>"; };
-		25FF667D214A087A0059B035 /* ShieldSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShieldSDK.framework; sourceTree = "<group>"; };
 		5C8C3808204D2036007FEECE /* DTTJailbreakDetection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTTJailbreakDetection.h; sourceTree = "<group>"; };
 		5C8C3809204D2036007FEECE /* DTTJailbreakDetection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTTJailbreakDetection.m; sourceTree = "<group>"; };
 		5CCFE008204CE667006DED64 /* Smsx Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smsx Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25FF667E214A087A0059B035 /* ShieldSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +102,6 @@
 		5CCFDFFF204CE667006DED64 = {
 			isa = PBXGroup;
 			children = (
-				25FF667D214A087A0059B035 /* ShieldSDK.framework */,
 				5CCFE00A204CE667006DED64 /* Smsx Sample */,
 				5CCFE023204CE667006DED64 /* Smsx SampleUITests */,
 				5CCFE009204CE667006DED64 /* Products */,
@@ -162,7 +156,6 @@
 				5CCFE005204CE667006DED64 /* Frameworks */,
 				5CCFE006204CE667006DED64 /* Resources */,
 				25FF6680214A087A0059B035 /* Embed Frameworks */,
-				25FF6681214A08990059B035 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -249,22 +242,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		25FF6681214A08990059B035 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\n\nSHIELDER=\"/Users/highsiera/Desktop/farhan2/Shield_iOS-13/Shield_iOS.2.5.6.9144/Shielder.jar\"\nCONFIG=\"/Users/highsiera/Desktop/farhan2/Shield_iOS-13/Shield_iOS.2.5.6.9144/config-template.xml\"\nIPANAME=\"$TARGET_BUILD_DIR/$PRODUCT_NAME.$WRAPPER_EXTENSION\"\n\njava -jar \"$SHIELDER\" --xcode --config \"$CONFIG\" -o \"$IPANAME\" \"$IPANAME\"";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5CCFE004204CE667006DED64 /* Sources */ = {
