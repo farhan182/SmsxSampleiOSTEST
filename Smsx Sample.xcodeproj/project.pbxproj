@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		25FF667E214A087A0059B035 /* ShieldSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25FF667D214A087A0059B035 /* ShieldSDK.framework */; };
+		25FF667F214A087A0059B035 /* ShieldSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25FF667D214A087A0059B035 /* ShieldSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5C8C380A204D2036007FEECE /* DTTJailbreakDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8C3809204D2036007FEECE /* DTTJailbreakDetection.m */; };
+		5CCFE00D204CE667006DED64 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCFE00C204CE667006DED64 /* AppDelegate.m */; };
+		5CCFE010204CE667006DED64 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCFE00F204CE667006DED64 /* ViewController.m */; };
+		5CCFE013204CE667006DED64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCFE011204CE667006DED64 /* Main.storyboard */; };
+		5CCFE015204CE667006DED64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCFE014204CE667006DED64 /* Assets.xcassets */; };
+		5CCFE018204CE667006DED64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCFE016204CE667006DED64 /* LaunchScreen.storyboard */; };
+		5CCFE01B204CE667006DED64 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCFE01A204CE667006DED64 /* main.m */; };
+		5CCFE025204CE667006DED64 /* Smsx_SampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCFE024204CE667006DED64 /* Smsx_SampleUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5CCFE021204CE667006DED64 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CCFE000204CE667006DED64 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CCFE007204CE667006DED64;
+			remoteInfo = "Smsx Sample";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		25FF6680214A087A0059B035 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				25FF667F214A087A0059B035 /* ShieldSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		25218047210B01AD00AD6E92 /* ShieldSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShieldSDK.framework; path = ../Shield_iOS.2.5.4.8850.webonline/Shield_iOS.2.5.4.8850/ShieldSDK.framework; sourceTree = "<group>"; };
+		25A64BAE2052335100EB5645 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		25A64BB02052336600EB5645 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		25A64BB22052349F00EB5645 /* libShieldSDK.release.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libShieldSDK.release.a; path = "Smsx SampleUITests/SMSX Sample/libShieldSDK.release.a"; sourceTree = "<group>"; };
+		25A64BB4205235D200EB5645 /* shield_bind */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = shield_bind; sourceTree = "<group>"; };
+		25A64BB6205235E300EB5645 /* libShieldSDK.release.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libShieldSDK.release.a; sourceTree = "<group>"; };
+		25A64BB8205235F000EB5645 /* config-encrypt.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "config-encrypt.txt"; sourceTree = "<group>"; };
+		25A64BBD205239AB00EB5645 /* config */ = {isa = PBXFileReference; lastKnownFileType = folder; name = config; path = ../Shield_iOS.2.4.5.7255/config; sourceTree = "<group>"; };
+		25FF667D214A087A0059B035 /* ShieldSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShieldSDK.framework; sourceTree = "<group>"; };
+		5C8C3808204D2036007FEECE /* DTTJailbreakDetection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTTJailbreakDetection.h; sourceTree = "<group>"; };
+		5C8C3809204D2036007FEECE /* DTTJailbreakDetection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DTTJailbreakDetection.m; sourceTree = "<group>"; };
+		5CCFE008204CE667006DED64 /* Smsx Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smsx Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CCFE00B204CE667006DED64 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5CCFE00C204CE667006DED64 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5CCFE00E204CE667006DED64 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5CCFE00F204CE667006DED64 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5CCFE012204CE667006DED64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5CCFE014204CE667006DED64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5CCFE017204CE667006DED64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5CCFE019204CE667006DED64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CCFE01A204CE667006DED64 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5CCFE020204CE667006DED64 /* Smsx SampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Smsx SampleUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CCFE024204CE667006DED64 /* Smsx_SampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Smsx_SampleUITests.m; sourceTree = "<group>"; };
+		5CCFE026204CE667006DED64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5CCFE005204CE667006DED64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25FF667E214A087A0059B035 /* ShieldSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CCFE01D204CE667006DED64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		25A64BAD2052334F00EB5645 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				25218047210B01AD00AD6E92 /* ShieldSDK.framework */,
+				25A64BBD205239AB00EB5645 /* config */,
+				25A64BB8205235F000EB5645 /* config-encrypt.txt */,
+				25A64BB6205235E300EB5645 /* libShieldSDK.release.a */,
+				25A64BB4205235D200EB5645 /* shield_bind */,
+				25A64BB22052349F00EB5645 /* libShieldSDK.release.a */,
+				25A64BB02052336600EB5645 /* libz.tbd */,
+				25A64BAE2052335100EB5645 /* libc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5CCFDFFF204CE667006DED64 = {
+			isa = PBXGroup;
+			children = (
+				25FF667D214A087A0059B035 /* ShieldSDK.framework */,
+				5CCFE00A204CE667006DED64 /* Smsx Sample */,
+				5CCFE023204CE667006DED64 /* Smsx SampleUITests */,
+				5CCFE009204CE667006DED64 /* Products */,
+				25A64BAD2052334F00EB5645 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5CCFE009204CE667006DED64 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5CCFE008204CE667006DED64 /* Smsx Sample.app */,
+				5CCFE020204CE667006DED64 /* Smsx SampleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5CCFE00A204CE667006DED64 /* Smsx Sample */ = {
+			isa = PBXGroup;
+			children = (
+				5CCFE00B204CE667006DED64 /* AppDelegate.h */,
+				5CCFE00C204CE667006DED64 /* AppDelegate.m */,
+				5CCFE00E204CE667006DED64 /* ViewController.h */,
+				5CCFE00F204CE667006DED64 /* ViewController.m */,
+				5CCFE011204CE667006DED64 /* Main.storyboard */,
+				5CCFE014204CE667006DED64 /* Assets.xcassets */,
+				5CCFE016204CE667006DED64 /* LaunchScreen.storyboard */,
+				5CCFE019204CE667006DED64 /* Info.plist */,
+				5CCFE01A204CE667006DED64 /* main.m */,
+				5C8C3808204D2036007FEECE /* DTTJailbreakDetection.h */,
+				5C8C3809204D2036007FEECE /* DTTJailbreakDetection.m */,
+			);
+			path = "Smsx Sample";
+			sourceTree = "<group>";
+		};
+		5CCFE023204CE667006DED64 /* Smsx SampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5CCFE024204CE667006DED64 /* Smsx_SampleUITests.m */,
+				5CCFE026204CE667006DED64 /* Info.plist */,
+			);
+			path = "Smsx SampleUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5CCFE007204CE667006DED64 /* Smsx Sample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CCFE029204CE667006DED64 /* Build configuration list for PBXNativeTarget "Smsx Sample" */;
+			buildPhases = (
+				5CCFE004204CE667006DED64 /* Sources */,
+				5CCFE005204CE667006DED64 /* Frameworks */,
+				5CCFE006204CE667006DED64 /* Resources */,
+				25FF6680214A087A0059B035 /* Embed Frameworks */,
+				25FF6681214A08990059B035 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Smsx Sample";
+			productName = "Smsx Sample";
+			productReference = 5CCFE008204CE667006DED64 /* Smsx Sample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5CCFE01F204CE667006DED64 /* Smsx SampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CCFE02C204CE667006DED64 /* Build configuration list for PBXNativeTarget "Smsx SampleUITests" */;
+			buildPhases = (
+				5CCFE01C204CE667006DED64 /* Sources */,
+				5CCFE01D204CE667006DED64 /* Frameworks */,
+				5CCFE01E204CE667006DED64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CCFE022204CE667006DED64 /* PBXTargetDependency */,
+			);
+			name = "Smsx SampleUITests";
+			productName = "Smsx SampleUITests";
+			productReference = 5CCFE020204CE667006DED64 /* Smsx SampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5CCFE000204CE667006DED64 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "MY-COM-0089";
+				TargetAttributes = {
+					5CCFE007204CE667006DED64 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Manual;
+					};
+					5CCFE01F204CE667006DED64 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5CCFE007204CE667006DED64;
+					};
+				};
+			};
+			buildConfigurationList = 5CCFE003204CE667006DED64 /* Build configuration list for PBXProject "Smsx Sample" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5CCFDFFF204CE667006DED64;
+			productRefGroup = 5CCFE009204CE667006DED64 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5CCFE007204CE667006DED64 /* Smsx Sample */,
+				5CCFE01F204CE667006DED64 /* Smsx SampleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5CCFE006204CE667006DED64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CCFE018204CE667006DED64 /* LaunchScreen.storyboard in Resources */,
+				5CCFE015204CE667006DED64 /* Assets.xcassets in Resources */,
+				5CCFE013204CE667006DED64 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CCFE01E204CE667006DED64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		25FF6681214A08990059B035 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nSHIELDER=\"/Users/highsiera/Desktop/farhan2/Shield_iOS-13/Shield_iOS.2.5.6.9144/Shielder.jar\"\nCONFIG=\"/Users/highsiera/Desktop/farhan2/Shield_iOS-13/Shield_iOS.2.5.6.9144/config-template.xml\"\nIPANAME=\"$TARGET_BUILD_DIR/$PRODUCT_NAME.$WRAPPER_EXTENSION\"\n\njava -jar \"$SHIELDER\" --xcode --config \"$CONFIG\" -o \"$IPANAME\" \"$IPANAME\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5CCFE004204CE667006DED64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CCFE010204CE667006DED64 /* ViewController.m in Sources */,
+				5CCFE01B204CE667006DED64 /* main.m in Sources */,
+				5C8C380A204D2036007FEECE /* DTTJailbreakDetection.m in Sources */,
+				5CCFE00D204CE667006DED64 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CCFE01C204CE667006DED64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CCFE025204CE667006DED64 /* Smsx_SampleUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5CCFE022204CE667006DED64 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CCFE007204CE667006DED64 /* Smsx Sample */;
+			targetProxy = 5CCFE021204CE667006DED64 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5CCFE011204CE667006DED64 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CCFE012204CE667006DED64 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5CCFE016204CE667006DED64 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CCFE017204CE667006DED64 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5CCFE027204CE667006DED64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5CCFE028204CE667006DED64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5CCFE02A204CE667006DED64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 7JJGK6VM4S;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "Smsx Sample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Smsx\\ SampleUITests/SMSX\\ Sample",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.securemetric.test.smsxsample.Smsx-Sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ad97708b-bad0-478e-b4b5-0eb1a4839cf1";
+				PROVISIONING_PROFILE_SPECIFIER = "Development test";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5CCFE02B204CE667006DED64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 7JJGK6VM4S;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "Smsx Sample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Smsx\\ SampleUITests/SMSX\\ Sample",
+					"$(PROJECT_DIR)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.securemetric.test.smsxsample.Smsx-Sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ad97708b-bad0-478e-b4b5-0eb1a4839cf1";
+				PROVISIONING_PROFILE_SPECIFIER = "Development test";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5CCFE02D204CE667006DED64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JJGK6VM4S;
+				INFOPLIST_FILE = "Smsx SampleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.securemetric.test.smsxsample.Smsx-SampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Smsx Sample";
+			};
+			name = Debug;
+		};
+		5CCFE02E204CE667006DED64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7JJGK6VM4S;
+				INFOPLIST_FILE = "Smsx SampleUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.securemetric.test.smsxsample.Smsx-SampleUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Smsx Sample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5CCFE003204CE667006DED64 /* Build configuration list for PBXProject "Smsx Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CCFE027204CE667006DED64 /* Debug */,
+				5CCFE028204CE667006DED64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CCFE029204CE667006DED64 /* Build configuration list for PBXNativeTarget "Smsx Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CCFE02A204CE667006DED64 /* Debug */,
+				5CCFE02B204CE667006DED64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CCFE02C204CE667006DED64 /* Build configuration list for PBXNativeTarget "Smsx SampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CCFE02D204CE667006DED64 /* Debug */,
+				5CCFE02E204CE667006DED64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5CCFE000204CE667006DED64 /* Project object */;
+}
