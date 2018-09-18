@@ -1,0 +1,303 @@
+#!/bin/bash
+
+APPFILE=""
+KEYFILE=""
+
+BOUNDAPPFILE=""
+
+WORKDIR_TMP="binding_tempdir/tmp"
+WORKDIR_APP="binding_tempdir/app"
+
+INPLACE=0
+
+function main {
+    parse_args "$@" || return 1
+    unpack_app || return 1
+    examine_app || return 1
+    run_binder || return 1
+    repack_app || return 1
+}
+
+
+function parse_args {
+    for arg do
+        if test -n "$next_arg"
+        then
+            eval $next_arg="$arg"
+            next_arg=""
+            cur_opt=""
+        else
+            case "$arg" in
+                --help)
+                    print_help
+                    return 1
+                    ;;
+                --inplace)
+                    INPLACE=1
+                    ;;
+                -o)
+                    cur_opt="$arg"
+                    next_arg=BOUNDAPPFILE
+                    ;;
+                -*)
+                    echo "Unknown option: $arg"
+                    return 1
+                    ;;
+                *)
+                    if test -z "$arg"
+                    then
+                        echo "Empty arguments are not allowed"
+                        return 1
+                    fi
+                    if test -z "$APPFILE"; then APPFILE="$arg"
+                    elif test -z "$KEYFILE"; then KEYFILE="$arg"
+                    else
+                        echo "Unhandled argument: $arg"
+                        return 1
+                    fi
+                    ;;
+            esac
+        fi
+    done
+    if test -n "$next_arg"
+    then
+        echo "Option '$cur_opt' requires an argument"
+        return 1
+    fi
+    if test -z "$KEYFILE"
+    then
+        print_usage
+        return 1
+    fi
+}
+
+
+function print_usage {
+    print_help short
+}
+
+
+function print_help {
+    what="$1"
+    if test -z "$what"; then what=long; fi
+    echo "usage: $0 [ options ] <app> <keyfile>"
+    if test "$what" != "short"
+    then
+        echo
+        echo "  Binds the application <app> to Shield."
+        echo
+        echo "  <app> should be the application itself (a directory with the"
+        echo "  .app extension) or a zip file containing the application, or"
+        echo "  an .ipa file."
+        echo
+        echo "  The resulting bound application will be produced as a zip or"
+        echo "  ipa file. This file will be named similarly to the input file"
+        echo "  but with -bound-release added to the base name. So e.g. when"
+        echo "  binding the file APPNAME.ipa, the bound output file will be"
+        echo "  APPNAME-bound-release.ipa. This can be overridden with the -o"
+        echo "  option."
+        echo
+    fi
+    echo "  options:"
+    echo "    --help      Print help text and exit"
+    echo "    -o FILE     Write bound application to FILE"
+    echo "    ---inplace  Modify a .app folder in place"
+}
+
+
+function unpack_app {
+    if test ! -e "$APPFILE"
+    then
+        echo "No such file: $APPFILE"
+        return 1
+    fi
+    if test -d "$APPFILE"
+    then
+        APPFILE="$(echo "$APPFILE" | sed -e 's:/*$::')"
+    fi
+    rm -rf "$WORKDIR_TMP" "$WORKDIR_APP"
+    mkdir -p "$WORKDIR_TMP" "$WORKDIR_APP"
+    if test $INPLACE != 0
+    then
+        if test ! -d "$APPFILE"
+        then
+            echo "In place binding only works on folders."
+            return 1
+        fi
+        WORKDIR_APP=$APPFILE
+    else
+        if test -d "$APPFILE"
+        then
+            cp -a "$APPFILE" "$WORKDIR_APP" || return 1
+            return 0
+        fi
+        unzip -q "$APPFILE" -d "$WORKDIR_APP"
+        if test $? != 0
+        then
+            echo "Failed to unzip $APPFILE"
+            return 1
+        fi
+    fi
+}
+
+
+function examine_app {
+    # Determine the executable path from the Info.plist file
+    INFO_PLIST="$(find "$WORKDIR_APP" -regex '^.*\.app/Info.plist$' | sort | head -n1)"
+    if test -z "$INFO_PLIST"
+    then
+        echo "Failed to find Info.plist"
+        return 1
+    fi
+    if [ $(uname -s) == "Darwin" ]; then
+        plutil -convert xml1 "$INFO_PLIST" -o "$WORKDIR_TMP"/Info.plist;
+    elif [ $(uname -s) == "Linux" ]; then
+        grep -q "bplist00" "$INFO_PLIST"
+        if [ $? -eq 0 ]; then
+            command -v plistutil >/dev/null 2>&1 || { echo "Could not find plistutil. Please install libplist-utils."; return 1; }
+            plistutil -i "$INFO_PLIST" -o "$WORKDIR_TMP"/Info.plist;
+        else
+            cp "$INFO_PLIST" "$WORKDIR_TMP"/Info.plist;
+        fi
+    else
+        echo "Unsupported operating system"
+        return 1;
+    fi
+    if test $? != 0
+    then
+        echo "Failed to read Info.plist. Hopefully a more helpful error is printed above."
+        return 1
+    fi
+    EXECUTABLE_NAME="$(grep ".*<key>CFBundleExecutable</key>.*" -A1 "$WORKDIR_TMP"/Info.plist | tail -n1 | sed "s/.*<string>\(.*\)<\/string>.*/\1/")"
+    if test -z "$EXECUTABLE_NAME"
+    then
+        echo "Failed to find executable from the CFBundleExecutable key in the Info.plist."
+        echo "An unexpected error has occurred."
+        return 1
+    fi
+    EXECUTABLE_PATH="$(find "$WORKDIR_APP" -regex "^.*\.app/$EXECUTABLE_NAME$" | sort | head -n1)"
+    if test -z "$EXECUTABLE_PATH"
+    then
+        echo "Failed to find executable ($EXECUTABLE_NAME) in application directory"
+        return 1
+    fi
+
+    # Determine the app folder path
+    APPDIR="$(dirname "$EXECUTABLE_PATH")"
+    if test ! -d "$APPDIR"
+    then
+        echo "Not a directory: $APPDIR"
+        return 1
+    fi
+}
+
+function run_binder {
+    # Determine the key and iv for encryption from the key file
+    BINDKEY="$(cat "$KEYFILE" | grep ".*<bindkey>.*</bindkey>.*" | sed "s/.*<bindkey>\(.*\)<\/bindkey>.*/\1/")"
+    BINDIV="$(cat "$KEYFILE" | grep ".*<bindiv>.*</bindiv>.*" | sed "s/.*<bindiv>\(.*\)<\/bindiv>.*/\1/")"
+
+    if test -z "$BINDKEY"
+    then
+        echo "Failed to obtain binding key from $KEYFILE."
+        echo "Is there a <bindkey> item in that file?"
+        return 1
+    fi
+    if test -z "$BINDIV"
+    then
+        echo "Failed to obtain binding iv from $KEYFILE."
+        echo "Is there a <bindiv> item in that file?"
+        return 1
+    fi
+
+    # Bind the app
+    if [ $(uname -s) == "Darwin" ]; then
+        BINDER="$(dirname "$0")/binder_osx"
+    elif [ $(uname -s) == "Linux" ]; then
+        BINDER="$(dirname "$0")/binder_linux"
+    else
+        echo "Unsupported operating system"
+        return 1
+    fi
+    if test ! -e "$BINDER"
+    then
+        echo "Failed to find the 'binder' executable."
+        echo "Expected to find it at: $BINDER"
+        return 1
+    fi
+    if test ! -x "$BINDER"
+    then
+        echo "The file '$BINDER' is not executable."
+        return 1
+    fi
+    # In the in place case, check if we are already bound and skip binding in
+    # that case. This is necessary because Xcode runs the build step scripts
+    # even if the app has not been recompiled.
+    if test $INPLACE != 0
+    then
+        "$BINDER" "$EXECUTABLE_PATH" --info | grep Bound | grep Yes >/dev/null
+        if [ $? -eq 0 ]
+        then
+            echo "App already bound in place."
+            return 0
+        fi
+    fi
+    "$BINDER" "$EXECUTABLE_PATH" --key "$BINDKEY" --iv "$BINDIV" --tempdir "$WORKDIR_TMP"
+    if test $? != 0
+    then
+        echo "Failed to bind executable. Hopefully a more helpful error is printed above this."
+        return 1
+    fi
+
+    mv "$EXECUTABLE_PATH"_bound "$EXECUTABLE_PATH"
+    if test $? != 0
+    then
+        echo "Failed to move bound executable in place. Hopefully a more helpful error is printed above this."
+        return 1
+    fi
+
+    # bi.txt is produced by binder.
+    cp "$WORKDIR_TMP/bi.txt" "$APPDIR"/
+    if test $? != 0
+    then
+        echo "Failed to copy bi.txt. Hopefully a more helpful error is printed above this."
+        return 1
+    fi
+}
+
+function repack_app {
+    if test $INPLACE != 0
+    then
+        return 0
+    fi
+    if test -z "$BOUNDAPPFILE"
+    then
+        BOUNDAPPFILE="$(echo "$APPFILE" | sed -e 's:\(\.[^/]*\)/*$:-bound-release\1:')"
+    fi
+    if test -z "$BOUNDAPPFILE"
+    then
+        echo "Failed to construct file name for output file"
+        echo "Please contact support"
+        return 1
+    fi
+    if test -d "$APPFILE"
+    then
+        BOUNDAPPFILE="$BOUNDAPPFILE.zip"
+    fi
+    BOUNDAPPFILE="$(cd "$(dirname "$BOUNDAPPFILE")"; pwd)/$(basename "$BOUNDAPPFILE")"
+    rm -f "$BOUNDAPPFILE"
+    (cd "$WORKDIR_APP" && zip -r "$BOUNDAPPFILE" .)
+    if test $? != 0
+    then
+        echo "Failed to pack $BOUNDAPPFILE. Hopefully a more helpful error is printed above this."
+        return 1
+    fi
+    echo "Bound application packed in: $BOUNDAPPFILE"
+}
+
+main "$@"
+if test $? != 0
+then
+    echo "Binding FAILED"
+    exit 1
+fi
+exit 0
